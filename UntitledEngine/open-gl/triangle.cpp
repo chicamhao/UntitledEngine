@@ -1,41 +1,54 @@
 #include "triangle.h"
 
-void handle_log(unsigned int vertexShader, GLenum status);
+void handleCompileError(unsigned int shader);
+void handleLinkError(unsigned int object);
 
-void triangle::setup(float vertices[])
+void triangle::initialize(float vertices[], unsigned int indices[])
 {
     // vertex
     unsigned int vertexShader = glCreateShader(GL_VERTEX_SHADER);
     glShaderSource(vertexShader, 1, &vertexSource, nullptr);
     glCompileShader(vertexShader);
-    handle_log(vertexShader, GL_COMPILE_STATUS);
+    handleCompileError(vertexShader);
     
     // fragment
     unsigned int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
     glShaderSource(fragmentShader, 1, &fragmentSource, nullptr);
     glCompileShader(fragmentShader);
-    handle_log(fragmentShader, GL_COMPILE_STATUS);
+    handleCompileError(fragmentShader);
     
     // program
     shaderProgram = glCreateProgram();
     glAttachShader(shaderProgram, vertexShader);
     glAttachShader(shaderProgram, fragmentShader);
     glLinkProgram(shaderProgram);
-    handle_log(shaderProgram, GL_LINK_STATUS);
+    handleLinkError(shaderProgram);
     
     // release shaders
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
     
-    // link vertex attribute
+    //--link vertex attribute--
     glGenVertexArrays(1, &VAO);
-    glGenBuffers(1, &VBO);
-    
+    glGenBuffers(1, &VBO); // store large number of vertices in GPU's memory
+    glGenBuffers(1, &EBO); // avoid verices overlap by using indices
+
+    // bind vertex array object VAO
+    glBindVertexArray(VAO); // ~
+
+    // copy vectices array in a buffer for OpenGL to use
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(float) * 12, vertices, GL_STATIC_DRAW);
     
+    // copy index array in a element buffer
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * 6, indices, GL_STATIC_DRAW);
+    
+    // interpret the vertex data (per vertex attribute)
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
+    
+    //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 }
 
 void triangle::render()
@@ -43,7 +56,7 @@ void triangle::render()
     // execute
     glUseProgram(shaderProgram);
     glBindVertexArray(VAO);
-    glDrawArrays(GL_TRIANGLES, 0, 3);
+    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 }
 
 void triangle::release()
@@ -53,14 +66,28 @@ void triangle::release()
     glDeleteProgram(shaderProgram);
 }
 
-void handle_log(unsigned int shader, GLenum status)
+void handleCompileError(unsigned int object)
 {
     int sucess;
     char infoLog[512];
-    glGetShaderiv(shader, status, &sucess);
+    glGetShaderiv(object, GL_COMPILE_STATUS, &sucess);
+    
     if (!sucess)
     {
-        glGetShaderInfoLog(shader, 512, nullptr, infoLog);
-        std::cout << "ERROR::\n" << infoLog << std::endl;
+        glGetShaderInfoLog(object, 512, nullptr, infoLog);
+        std::cout << "ERROR::SHADER\n" << infoLog << std::endl;
+    }
+}
+
+void handleLinkError(unsigned int object)
+{
+    int sucess;
+    char infoLog[512];
+    glGetProgramiv(object, GL_LINK_STATUS, &sucess);
+    
+    if (!sucess)
+    {
+        glGetProgramInfoLog(object, 512, nullptr, infoLog);
+        std::cout << "ERROR::LINK\n" << infoLog << std::endl;
     }
 }

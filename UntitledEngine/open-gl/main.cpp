@@ -1,7 +1,6 @@
-#include <glad/glad.h>
 #include "triangle.h"
 
-void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+void framebufferSizeCallback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
 
 int main(void)
@@ -16,9 +15,9 @@ int main(void)
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     
     // window creation
-    GLFWwindow* window = glfwCreateWindow(800, 600, "opengl", nullptr, nullptr);
+    GLFWwindow* window = glfwCreateWindow(800, 600, "untitled-engine", nullptr, nullptr);
     glfwMakeContextCurrent(window);
-    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+    glfwSetFramebufferSizeCallback(window, framebufferSizeCallback);
     
     // load all function pointers
     gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
@@ -26,11 +25,16 @@ int main(void)
     // triangle
     auto tr = new triangle();
     float vertices[] = {
-        -0.5f, -0.5f, 0.0f, // left
-         0.5f, -0.5f, 0.0f, // right
-         0.0f,  0.5f, 0.0f  // top
+         0.5f,  0.5f, 0.0f,  // top right
+         0.5f, -0.5f, 0.0f,  // bottom right
+        -0.5f, -0.5f, 0.0f,  // bottom left
+        -0.5f,  0.5f, 0.0f   // top left
     };
-    tr->setup(vertices);
+    unsigned int indices[] = {
+      0, 1, 3,
+      1, 2, 3
+    };
+    tr->initialize(vertices, indices);
     
     while (!glfwWindowShouldClose(window))
     {
@@ -54,7 +58,7 @@ int main(void)
     return 0;
 }
 
-void framebuffer_size_callback(GLFWwindow* window, int width, int height)
+void framebufferSizeCallback(GLFWwindow* window, int width, int height)
 {
     glViewport(0, 0, width, height);
 }
