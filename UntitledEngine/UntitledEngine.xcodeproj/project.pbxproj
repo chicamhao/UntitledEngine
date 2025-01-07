@@ -24,7 +24,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5E93CE5A2D22D4300022E446 /* open-gl */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "open-gl"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E93CE5A2D22D4300022E446 /* UntitledEngine */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = UntitledEngine; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E93CE652D22D6690022E446 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		5E93CE672D22D6F40022E446 /* glfw3Config.cmake */ = {isa = PBXFileReference; lastKnownFileType = text; path = glfw3Config.cmake; sourceTree = "<group>"; };
 		5E93CE682D22D6F40022E446 /* glfw3ConfigVersion.cmake */ = {isa = PBXFileReference; lastKnownFileType = text; path = glfw3ConfigVersion.cmake; sourceTree = "<group>"; };
@@ -70,7 +70,7 @@
 		5E93CE5B2D22D4300022E446 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5E93CE5A2D22D4300022E446 /* open-gl */,
+				5E93CE5A2D22D4300022E446 /* UntitledEngine */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -128,9 +128,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5E93CE592D22D4300022E446 /* open-gl */ = {
+		5E93CE592D22D4300022E446 /* UntitledEngine */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5E93CE612D22D4300022E446 /* Build configuration list for PBXNativeTarget "open-gl" */;
+			buildConfigurationList = 5E93CE612D22D4300022E446 /* Build configuration list for PBXNativeTarget "UntitledEngine" */;
 			buildPhases = (
 				5E93CE562D22D4300022E446 /* Sources */,
 				5E93CE572D22D4300022E446 /* Frameworks */,
@@ -143,11 +143,11 @@
 			fileSystemSynchronizedGroups = (
 				5E93CE5C2D22D4300022E446 /* open-gl */,
 			);
-			name = "open-gl";
+			name = UntitledEngine;
 			packageProductDependencies = (
 			);
 			productName = "open-gl";
-			productReference = 5E93CE5A2D22D4300022E446 /* open-gl */;
+			productReference = 5E93CE5A2D22D4300022E446 /* UntitledEngine */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -164,7 +164,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5E93CE552D22D4300022E446 /* Build configuration list for PBXProject "open-gl" */;
+			buildConfigurationList = 5E93CE552D22D4300022E446 /* Build configuration list for PBXProject "UntitledEngine" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -178,7 +178,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5E93CE592D22D4300022E446 /* open-gl */,
+				5E93CE592D22D4300022E446 /* UntitledEngine */,
 			);
 		};
 /* End PBXProject section */
@@ -344,7 +344,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5E93CE552D22D4300022E446 /* Build configuration list for PBXProject "open-gl" */ = {
+		5E93CE552D22D4300022E446 /* Build configuration list for PBXProject "UntitledEngine" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5E93CE5F2D22D4300022E446 /* Debug */,
@@ -353,7 +353,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5E93CE612D22D4300022E446 /* Build configuration list for PBXNativeTarget "open-gl" */ = {
+		5E93CE612D22D4300022E446 /* Build configuration list for PBXNativeTarget "UntitledEngine" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5E93CE622D22D4300022E446 /* Debug */,
