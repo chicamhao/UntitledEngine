@@ -38,9 +38,9 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		5E93CE5C2D22D4300022E446 /* open-gl */ = {
+		5E93CE5C2D22D4300022E446 /* UntitledEngine */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "open-gl";
+			path = UntitledEngine;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -61,7 +61,7 @@
 		5E93CE512D22D4300022E446 = {
 			isa = PBXGroup;
 			children = (
-				5E93CE5C2D22D4300022E446 /* open-gl */,
+				5E93CE5C2D22D4300022E446 /* UntitledEngine */,
 				5E93CE642D22D6690022E446 /* Frameworks */,
 				5E93CE5B2D22D4300022E446 /* Products */,
 			);
@@ -141,7 +141,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				5E93CE5C2D22D4300022E446 /* open-gl */,
+				5E93CE5C2D22D4300022E446 /* UntitledEngine */,
 			);
 			name = UntitledEngine;
 			packageProductDependencies = (
